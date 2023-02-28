@@ -3,6 +3,25 @@
 
 This repository contains all the exercises of the "INFOM124 - Vérification et validation logicielle". To use this repository locally, you have to [clone it](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) to your own machine.
 
+## Documentation
+
+If you find any relevant doc, tell me so that I can add it to this section ;)
+
+### AssertJ
+
+We will mainly use AssertJ assertions during this course so here are some relevant links:
+
+- AssertJ official doc: [https://assertj.github.io/doc/](https://assertj.github.io/doc/)
+- Basic assertions: [https://ngeor.com/2018/04/22/assertj-cheatsheet.html](https://ngeor.com/2018/04/22/assertj-cheatsheet.html)
+- Iterable contains assertions: [https://ted.dev/assets/AssertJ%20Iterable%20contains%20assertions%20%5BCheat%20Sheet%5D%20-%20draft%20Jan%209%202023.pdf](https://ted.dev/assets/AssertJ%20Iterable%20contains%20assertions%20%5BCheat%20Sheet%5D%20-%20draft%20Jan%209%202023.pdf)
+
+### jUnit 5
+
+During this practical course, we will mainly use AssertJ assertions but here are some documentation of jUnit 5 assertions for your information.
+
+- Official jUnit 5 website: [https://junit.org/junit5/](https://junit.org/junit5/)
+- Cheat sheet: [https://cheatography.com/cs8898/cheat-sheets/junit-5/pdf/](https://cheatography.com/cs8898/cheat-sheets/junit-5/pdf/)
+
 ## Requirements
 
 All the requirements discussed in this section refer to Linux or macOS distributions. If you are on Windows 10, you can install a Linux kernel so that you can use the same command lines as Linux or macOS, by following [this tutorial](https://www.ssl.com/fr/comment/activer-le-sous-syst%C3%A8me-linux-installer-ubuntu-windows-10/).
