@@ -69,4 +69,25 @@ public class TennisTest {
         checkAllScores(player1Points, player2Points, expectedScore, game);
     }
 
+    @ParameterizedTest
+    @MethodSource("getAllScores")
+    public void checkAllScoresTennisGame2(int player1Points, int player2Points, String expectedScore) {
+        TennisGame2 game = new TennisGame2("player1", "player2");
+        checkAllScores(player1Points, player2Points, expectedScore, game);
+    }
+
+    @ParameterizedTest
+    @MethodSource("getAllScores")
+    public void checkAllScoresTennisGame3(int player1Points, int player2Points, String expectedScore) {
+        TennisGame3 game = new TennisGame3("player1", "player2");
+        checkAllScores(player1Points, player2Points, expectedScore, game);
+    }
+
+    @ParameterizedTest
+    @MethodSource("getAllScores")
+    public void checkAllScoresTennisGame4(int player1Points, int player2Points, String expectedScore) {
+        TennisGame game = new TennisGame4("player1", "player2");
+        checkAllScores(player1Points, player2Points, expectedScore, game);
+    }
+
 }
