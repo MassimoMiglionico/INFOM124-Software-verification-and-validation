@@ -52,11 +52,12 @@ docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
 > **Note**: the above command should be used once! After the creation of the container, you will have to use the commands described in the [Docker](#some-commands) section.
 
 3. After the start of the docker, go to `http://localhost:9000`, login with `admin` and `admin` credentials and update your password.
-4. Fill in the fields to create a new SonarQube project and click on "Set Up"
-5. Click on "Locally" when SonarQube asks how to analyse your repository
-6. Generate a project token
-7. When SonarQube asks for your type of build, select `Maven`
-8. SonarQube will give you a terminal command to run sonar on a project. Keep it safe somewhere as you will need it. The command looks like something like this:
+4. The platform asks you "How do you want to create your project?". Select "Manually"
+5. Fill in the fields to create a new SonarQube project and click on "Set Up"
+6. Click on "Locally" when SonarQube asks how to analyse your repository
+7. Generate a project token
+8. When SonarQube asks for your type of build, select `Maven`
+9. SonarQube will give you a terminal command to run sonar on a project. Keep it safe somewhere as you will need it. The command looks like something like this:
 
 ```console
 mvn clean verify sonar:sonar \
@@ -65,7 +66,7 @@ mvn clean verify sonar:sonar \
   -Dsonar.login=sqp_6028bd54b089.....899d405de2159436feec
 ```
 
-9. This command will not be enough to run sonar on our project. We have to add this line at the end of the command: `-Pcoverage`. This gives us the entire command to keep:
+10. This command will not be enough to run sonar on our project. We have to add this line at the end of the command: `-Pcoverage`. This gives us the entire command to keep:
 ```console
 mvn clean verify sonar:sonar \
   -Dsonar.projectKey=test-sonar \
@@ -74,9 +75,9 @@ mvn clean verify sonar:sonar \
   -Pcoverage
 ```
 
-10. To start analyse a Java Maven project with SonarQube, go to the root of the project and execute the terminal command above. This will run the Maven project and link it to SonarQube analysis.
+11. To start analyse a Java Maven project with SonarQube, go to the root of the project (not the directory of the course!!) and execute the terminal command above. This will run the Maven project and link it to SonarQube analysis.
 > **NOTE:** each time you modify the code, you will need to rerun this command to make the changes effective.
-11. Go to `http://localhost:9000` and enjoy!
+12. Go to `http://localhost:9000` and enjoy!
 
 
 ### SonarLint plugin on Intellij (optional)
