@@ -175,16 +175,15 @@ class AssignmentsLogger {
 
 
 class AutoAssigner {
-    public AssignmentsLogger assign(List<Student> students, 
-      List<Workshop> workshops) {
+    public AssignmentsLogger assign(List<Student> students, List<Workshop> workshops) {
 
-          AssignmentsLogger assignments = new AssignmentsLogger();
+        AssignmentsLogger assignments = new AssignmentsLogger();
 
-          for(Workshop workshop : workshops) {
-              for(Student student : students) {
+        for (Workshop workshop : workshops) {
+            for (Student student : students) {
                 // Get the next available date for that workshop
                 // If there's no way, nothing we can do, just log it!
-                if(!workshop.hasAvailableDate()) {
+                if (!workshop.hasAvailableDate()) {
                     assignments.noAvailableSpots(workshop, student);
                 } else {
                     // Great, that workshop has an available date!
@@ -193,10 +192,10 @@ class AutoAssigner {
                     assignments.assign(workshop, student, nextDate);
                     workshop.takeASpot(nextDate);
                 }
-              }
-          }
+            }
+        }
 
-          return assignments;
+        return assignments;
 
     }
 

@@ -1,11 +1,13 @@
 package org.example;
 
+
 public class Drone {
     private int x;
     private int y;
-    private String direction;
+    private Direction direction;
 
-    public Drone(int x, int y, String direction) {
+
+    public Drone(int x, int y, Direction direction) {
         this.x = x;
         this.y = y;
         this.direction = direction;
@@ -13,58 +15,27 @@ public class Drone {
 
     public void receive(String commandsSequence) {
         for (int i = 0; i < commandsSequence.length(); ++i) {
-            String command = commandsSequence.substring(i, i + 1);
+            char command = commandsSequence.charAt(i);
 
-            if (command.equals("l") || command.equals("r")) {
-
-                // Rotate Rover
-                switch (direction) {
-                    case "N" -> {
-                        if (command.equals("r")) {
-                            direction = "E";
-                        } else {
-                            direction = "W";
-                        }
-                    }
-                    case "S" -> {
-                        if (command.equals("r")) {
-                            direction = "W";
-                        } else {
-                            direction = "E";
-                        }
-                    }
-                    case "W" -> {
-                        if (command.equals("r")) {
-                            direction = "N";
-                        } else {
-                            direction = "S";
-                        }
-                    }
-                    default -> {
-                        if (command.equals("r")) {
-                            direction = "S";
-                        } else {
-                            direction = "N";
-                        }
-                    }
-                }
+            if (command == 'l') {
+                direction = direction.rotateLeft();
+            } else if(command == 'r') {
+                direction = direction.rotateRight();
             } else {
-
-                // Displace Rover
-                int displacement1 = -1;
-
-                if (command.equals("f")) {
-                    displacement1 = 1;
-                }
-                int displacement = displacement1;
-
-                switch (direction) {
-                    case "N" -> y += displacement;
-                    case "S" -> y -= displacement;
-                    case "W" -> x -= displacement;
-                    default -> x += displacement;
-                }
+                move(command);
             }
+        }
+    }
+
+    public void move(char command) {
+        int displacement = -1;
+        if (command == 'f') { displacement = 1; }
+        // Displace Rover
+        switch (direction) {
+            case NORTH -> { y += displacement; }
+            case SOUTH -> { y -= displacement; }
+            case WEST -> { x -= displacement; }
+            case EAST -> { x += displacement;}
         }
     }
 
@@ -78,9 +49,33 @@ public class Drone {
     }
 }
 
+enum Direction {
+    NORTH, EAST, SOUTH, WEST;
+
+    public Direction rotateLeft() {
+        switch (this) {
+            case NORTH -> { return WEST; }
+            case EAST -> { return NORTH; }
+            case SOUTH -> { return EAST; }
+            case WEST -> { return SOUTH; }
+            default -> { return null; }
+        }
+    }
+
+    public Direction rotateRight() {
+        switch (this) {
+            case NORTH -> { return EAST; }
+            case EAST -> { return SOUTH; }
+            case SOUTH -> { return WEST; }
+            case WEST -> { return NORTH; }
+            default -> { return null; }
+        }
+    }
+}
+
 class Main {
     public static void main(String[] args) {
-        Drone drone = new Drone(0, 0, "N");
+        Drone drone = new Drone(0, 0, Direction.NORTH);
         System.out.println(drone);
         drone.receive("rfffrflffrf");
         System.out.println(drone);
