@@ -2,11 +2,9 @@ package org.example;
 
 public class Animal {
     private String name;
-    private String species;
 
-    public Animal(String name, String species) {
+    public Animal(String name) {
         this.name = name;
-        this.species = species;
     }
     public void makeSound() {
         System.out.println("Animal sound");
@@ -20,8 +18,8 @@ public class Animal {
 class Bird extends Animal {
     private boolean canFly;
 
-    public Bird(String name, String species, boolean canFly) {
-        super(name, species);
+    public Bird(String name, boolean canFly) {
+        super(name);
         this.canFly = canFly;
     }
     public void fly() {
@@ -33,18 +31,13 @@ class Bird extends Animal {
     }
 }
 
-class Ostrich extends Animal {
-    public Ostrich(String name, String species) {
-        super(name, species);
-    }
-}
 
 class Main {
     public static void main(String[] args) {
-        Ostrich ostrich = new Ostrich("Ostrich le tich", "ostrich");
+        Animal ostrich = new Animal("Ostrich le tich");
         ostrich.makeSound();
 
-        Bird chicken = new Bird("Lapin", "chicken", true);
+        Bird chicken = new Bird("Lapin", true);
         chicken.fly();
     }
 }

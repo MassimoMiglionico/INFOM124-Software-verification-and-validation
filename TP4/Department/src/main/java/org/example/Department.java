@@ -15,6 +15,9 @@ public class Department {
     public Employee getManager() {
         return manager;
     }
+
+    @Override
+    public String toString() { return "Département " + nameDepartment+ " dont le manager est " + manager; }
 }
 
 class Employee {
@@ -31,9 +34,10 @@ class Employee {
         this.department = department;
     }
 
-    public Employee getManager() {
-        return department.getManager();
-    }
+    public Employee getManager() { return department.getManager(); }
+
+    @Override
+    public String toString(){ return "Employé " + name + " " + lastName + " travaillant dans le département " + department; }
 }
 
 class ClientClass {

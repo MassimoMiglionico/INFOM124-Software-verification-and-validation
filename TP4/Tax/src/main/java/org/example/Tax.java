@@ -1,38 +1,41 @@
 package org.example;
 
 class Tax {
-    int status;
     double income;
+    double taxRate;
 
-    Tax(int status, double income) {
-        this.status = status;
+    Tax(double income, double taxRate) {
         this.income = income;
+        this.taxRate = taxRate;
     }
 
-    public double getBaseTaxAmount(int status) {
-        return income * getTaxRate(status);
+    public double getBaseTaxAmount() {
+        return income * taxRate;
     }
 
-    public double getTaxRate(int status) {
-        if (status == 1) return 0.27;
-        return 0.5;
+    public double getTaxRate() {
+        return taxRate;
+    }
+
+    public void setTaxRate(double taxRate) {
+        this.taxRate = taxRate;
     }
 }
 
-class Person extends Tax {
-    Person(int status, double income) {
-        super(status, income);
+class Person {
+    Tax tax;
+    Person(Tax tax) {
+        this.tax = tax;
     }
 
-    @Override
-    public double getBaseTaxAmount(int status) {
-        return this.income * 0.7;
+    public double getBaseTaxAmount() {
+        return tax.getBaseTaxAmount();
     }
 }
 
 class Main {
     public static void main(String[] args) {
-        Person person = new Person(1, 25000);
-        System.out.println(person.getBaseTaxAmount(1));
+        Person person = new Person(new Tax(25000, 0.7));
+        System.out.println(person.getBaseTaxAmount());
     }
 }

@@ -38,15 +38,15 @@ public class ShoppingCart {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Shopping Cart Details:\n");
-        sb.append("Currency: ").append(this.currency).append("\n");
-        sb.append("Exchange rate: ").append(this.exchangeRate).append("\n");
-        sb.append("Items:\n");
+        sb.append("Shopping Cart Details:\n" +
+                "Currency: " + this.currency + "\n" +
+                "Exchange rate: " + this.exchangeRate + "\n" +
+                "Items:\n");
 
         for (Item item : this.items) {
-            sb.append("- ").append(item.getName()).append(", ").append(item.getPrice()).append(" ").append(this.currency).append("\n");
+            sb.append("- " + item.getName() + ", " + item.getPrice() + " " + this.currency + "\n");
         }
-        sb.append("The total price in ").append(this.currency).append(" is: ").append(this.totalPrice);
+        sb.append("The total price in " + this.currency + " is: " + this.totalPrice);
         return sb.toString();
     }
 }
